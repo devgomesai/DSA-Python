@@ -24,6 +24,7 @@ class LinkedList:
     def find_middle_node(self):
         length = 0
         temp = self.head
+        # to calculate the length while loop
         while(temp):
             temp = temp.next
             length += 1

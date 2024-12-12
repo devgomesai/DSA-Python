@@ -26,11 +26,12 @@ class LinkedList:
 def find_kth_from_end(ll, k):
     slow = fast = ll.head
 
+    # move the fast pointer k times 
     for _ in range(k):
         if fast is None:
             return None
         fast = fast.next
-        
+    # then move until fast becomes none move then one one time  
     while(fast):
         slow = slow.next
         fast = fast.next
