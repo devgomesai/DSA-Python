@@ -11,18 +11,19 @@ class LinkedList:
         self.tail = self.new_node # also the tail as only one node
         self.length = 1 # as only one node so length is 1
 
-    # Insert a Node
+    # Insert a Node at a particular index
     def insert_node(self, index, value):
 
         if index < 0 or index > self.length:
-            return False
+            return False # index is out of range
 
-        if index == 0:
+        if index == 0: # Start
             return self.prepend(value=value)
 
-        if index == self.length:
+        if index == self.length: # End
             return self.Append(value=value)
-
+        
+        # Middle
         node = Node(value=value)
         temp = self.get(index=index-1) # node before main index i.e if index = 2 then prev_node is node at 1
         node.next = temp.next
@@ -43,16 +44,16 @@ class LinkedList:
 
     # Display Method
     def Display(self):
-        temp = self.head
+        temp = self.head 
         while temp is not None:
             print(temp.value)
             temp = temp.next
 
     # Pop Method
-    def Pop(self):
+    def Pop(self): # two pointers temp and pres
         if self.length == 0: # Check if no node
             return None
-        else: # if yes node 
+        else: # if yes there is a node 
             temp = self.head # assign head to a temp pointer
             pre = self.head # assign head to a pre pointer
             while(temp.next): # while true i.e temp.next is not None
@@ -71,13 +72,13 @@ class LinkedList:
         if self.length == 0:
             return None
 
-        temp = self.head # start of LL let temp also be
-        self.head = self.head.next # case: None so head becomes none 
-        temp.next = None
+        temp = self.head # temp varaible to be th start of LL
+        self.head = self.head.next # make the head as the 2nd node or next node 
+        temp.next = None # break the link of temp i.e the first node
         self.length -= 1 
 
         if self.length == 0: # if no node in LL this is for ****self.length -= 1**** when turns to zero
-            # self.head = None not required as happens on line 54
+            # self.head = None not required as happens on line 77
             self.tail = None
     
         return temp
@@ -89,8 +90,8 @@ class LinkedList:
             self.head = new_node
             self.tail = new_node
         else:
-            new_node.next = self.head
-            self.head = new_node
+            new_node.next = self.head # self.head is the pointer to the start of LL node so giving the head pointer to the new node
+            self.head = new_node # updating the head with the new node
         self.length += 1
 
     # get a node via index
@@ -133,12 +134,13 @@ class LinkedList:
         self.length -= 1
         return rm_node
 
-    # Reverse a Linked List
+    # Reverse a Linked List (********)
     def reverse(self):
 
         temp = self.head  # set temp with head
+
         self.head = self.tail # set head with tail
-        self.tail = temp  # set tail with head
+        self.tail = temp  # set tail with head but you keep the copy of head in temp
 
         after = temp.next # create 2 variables
         before = None
