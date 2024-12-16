@@ -38,7 +38,7 @@ class LinkedList:
         nodes_less_than_x = []
         nodes_greater_than_x = []
 
-        # Combine Them
+        # make less and greater than equal value lists
         while temp:
             if temp.value >= x:
                 nodes_greater_than_x.append(temp.value)
