@@ -39,8 +39,8 @@ class LinkedList:
         while temp:
             bin_number += str(temp.value)
             temp = temp.next
-        decimanl_number = int(bin_number, 2) # convert binary to decimal
-        return decimanl_number
+        # decimanl_number = int(bin_number, 2)  # convert binary to decimal
+        return int(bin_number, 2)
 
 
 # Test case 1: Binary number 110 = Decimal number 6

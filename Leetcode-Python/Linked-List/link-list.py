@@ -13,9 +13,8 @@ class LinkedList:
 
     # Insert a Node at a particular index
     def insert_node(self, index, value):
-
         if index < 0 or index > self.length:
-            return False # index is out of range
+            return False # index is out of range -> return
 
         if index == 0: # Start
             return self.prepend(value=value)
@@ -136,7 +135,6 @@ class LinkedList:
 
     # Reverse a Linked List (********)
     def reverse(self):
-
         temp = self.head  # set temp with head
 
         self.head = self.tail # set head with tail
