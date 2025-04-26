@@ -117,6 +117,25 @@ class DoublyLinkedList:
         self.length += 1
         
         return True
+
+    def remove(self, index):
+        if index < 0 or index >= self.length:
+            return None
+        
+        if index == 0:
+            return self.pop_first()
+        
+        if index == self.length - 1:
+            self.pop()
+            
+        before_node = self.get(index-1)
+        after_node = self.get(index+1)
+        
+        before_node.next = after_node
+        after_node.prev = before_node
+        
+        return True
+        
 # Interactive Menu
 DLL = None
 DONT_END = True
@@ -134,7 +153,8 @@ Welcome to Doubly Linked List!!
 7. Get
 8. Set
 9. Insert
-10. Exit
+10. Delete
+11. Exit
 
 Enter Choice: """
     )
@@ -193,7 +213,8 @@ Enter Choice: """
         if DLL is None:
             print("Error: Create a DLL first!")
         else:
-            index, value = input("Enter the Index and Value (separated by space): ").split()
+            index, value = input("Enter the Index and Value seperated by a space (index value): ").split()
+            print(index, value)
             index = int(index)
             node_updated = DLL.set_value(index, value)
             if node_updated:
@@ -212,8 +233,17 @@ Enter Choice: """
                 print("Node is inserted")
             else:
                 print('Error Inserting the Node')
-
-    elif user_input == "10":
+    elif user_input == '10':
+        if DLL is None:
+            print("Error: Create a DLL first!")
+        else:
+            index = int(input("Enter the index to remove from the DLL: "))
+            removed_node = DLL.remove(index=index)
+            if removed_node:
+                print("Successfully Removed the node!")
+            else:
+                print("Error Removing Node !")
+    elif user_input == "11":
         print("Exiting the Program.....")
         DONT_END = False
 
