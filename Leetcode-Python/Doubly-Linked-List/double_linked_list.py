@@ -126,15 +126,22 @@ class DoublyLinkedList:
             return self.pop_first()
         
         if index == self.length - 1:
-            self.pop()
-            
-        before_node = self.get(index-1)
-        after_node = self.get(index+1)
+            return self.pop()
         
-        before_node.next = after_node
-        after_node.prev = before_node
+        # get the node to remove
+        temp = self.get(index=index)
         
-        return True
+        # using only temp variable to change the linking part 
+        temp.next.prev = temp.prev
+        temp.prev.next = temp.next
+        
+        # Breaking the link
+        temp.next = None
+        temp.prev = None
+        
+        self.length -= 1
+        
+        return temp
         
 # Interactive Menu
 DLL = None
@@ -153,7 +160,7 @@ Welcome to Doubly Linked List!!
 7. Get
 8. Set
 9. Insert
-10. Delete
+10. Remove
 11. Exit
 
 Enter Choice: """
@@ -240,7 +247,7 @@ Enter Choice: """
             index = int(input("Enter the index to remove from the DLL: "))
             removed_node = DLL.remove(index=index)
             if removed_node:
-                print("Successfully Removed the node!")
+                print("Successfully Removed the node! Value:", removed_node.value)
             else:
                 print("Error Removing Node !")
     elif user_input == "11":
