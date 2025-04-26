@@ -85,7 +85,7 @@ class DoublyLinkedList:
             temp = self.tail
             for _ in range(self.length - 1, index, -1):
                 temp = temp.prev
-        return temp.value
+        return temp
 
     def set_value(self, index, value):
         temp = self.get(index=index)
@@ -94,6 +94,29 @@ class DoublyLinkedList:
             return True
         return False
 
+    def insert(self,index,value):
+        if index < 0 and index > self.length:
+            return False
+        # Start Case
+        if index == 0:
+            self.prepend(value=value)
+        # End Case
+        if index == self.length:
+            self.append(value=value)
+        # Middle Case
+        new_node = Node(value=value)
+        before_node = self.get(index-1)
+        after_node = before_node.next
+        
+        new_node.prev = before_node
+        new_node.next = after_node
+        
+        before_node.next = new_node
+        after_node.prev = new_node
+        
+        self.length += 1
+        
+        return True
 # Interactive Menu
 DLL = None
 DONT_END = True
@@ -110,7 +133,8 @@ Welcome to Doubly Linked List!!
 6. Pop First
 7. Get
 8. Set
-9. Exit
+9. Insert
+10. Exit
 
 Enter Choice: """
     )
@@ -159,11 +183,11 @@ Enter Choice: """
             print("Error: Create a DLL first!") 
         else:
             index = int(input("Enter an index to get: "))
-            value = DLL.get(index)
-            if value is None:
+            node = DLL.get(index)
+            if node is None:
                 print("Invalid Index!")
             else:
-                print(f"Value at index {index}: {value}")
+                print(f"Value at index {index}: {node.value}")
 
     elif user_input == '8':
         if DLL is None:
@@ -176,8 +200,20 @@ Enter Choice: """
                 print("Node is Updated")
             else:
                 print('Error Updating the Node')
+                
+    elif user_input == '9':
+        if DLL is None:
+            print("Error: Create a DLL first!")
+        else:
+            index, value = input("Enter the Index and Value to Insert the Node(separated by space): ").split()
+            index = int(index)
+            done = DLL.insert(index, value)
+            if done:
+                print("Node is inserted")
+            else:
+                print('Error Inserting the Node')
 
-    elif user_input == "9":
+    elif user_input == "10":
         print("Exiting the Program.....")
         DONT_END = False
 
