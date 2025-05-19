@@ -100,11 +100,9 @@ class DoublyLinkedList:
         # Start Case
         if index == 0:
             self.prepend(value=value)
-            return True
         # End Case
         if index == self.length:
             self.append(value=value)
-            return True
         # Middle Case
         new_node = Node(value=value)
         before_node = self.get(index-1)
