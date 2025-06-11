@@ -1,7 +1,6 @@
 class Command:
     def execute(self):
         raise NotImplementedError
-    
 class Light:
     def on(self):
         print("Light: ON")
@@ -35,3 +34,4 @@ light_off = LightOffCommand(light)
 remote =  RemoteControl()
 remote.submit(light_on)
 remote.submit(light_off)
+
