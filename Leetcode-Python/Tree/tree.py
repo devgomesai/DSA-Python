@@ -17,7 +17,7 @@ class BinarySearchTree:
         while(True):
             if node.value == temp.value: # Same node
                 return False
-            if node.value < temp.value: # left conditio
+            if node.value < temp.value: # left condition
                 if temp.left is None:
                     temp.left = node
                     return True
@@ -40,7 +40,18 @@ class BinarySearchTree:
                 return True
         return False
                     
-                
+tree = BinarySearchTree()
+tree.insert(47)
+tree.insert(21)
+tree.insert(76)
+tree.insert(18)
+tree.insert(27)
+tree.insert(52)
+tree.insert(82)
+
+print(tree.contains(27)) # True
+print(tree.contains(8)) # False
+    
                 
                 
                     

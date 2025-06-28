@@ -9,6 +9,7 @@ k = 100
 # Efficient approach: O(n)
 def max_sub_array_sum_best(arr, k):
     n = len(arr)
+     
     window_sum = sum(arr[:k])
     max_sum = window_sum
     max_start_index = 0
