@@ -51,10 +51,3 @@ tree.insert(82)
 
 print(tree.contains(27)) # True
 print(tree.contains(8)) # False
-    
-                
-                
-                    
-        
-        
-        
