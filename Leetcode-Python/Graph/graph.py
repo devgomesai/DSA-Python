@@ -39,7 +39,7 @@ class Graph:
 
         
     
-# Initialize 
+# Initialize the Graph
 my_graph = Graph()
 
 # Add Vertex
@@ -58,6 +58,7 @@ my_graph.add_edges('C','D')
 
 print('-'*15, "Before", '-'*15)
 my_graph.show_graph()
+# Remove a vertex
 my_graph.remove_vertex('D')
 print('-'*15, "After Removal of 'D' vertex", '-'*15)
 my_graph.show_graph()
