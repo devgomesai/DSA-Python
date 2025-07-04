@@ -1,5 +1,5 @@
 # ---------
-# Max Heap
+# Max Heap (parent > children) 
 # ---------
 #           (100)
 #         /      \
@@ -88,18 +88,19 @@ class MaxHeap:
     #         print(f"Value {value} not found in heap.")
     
     
-    
+# 100 99 75 58 72 61 18
 max_heap = MaxHeap()
-max_heap.insert(95)
+max_heap.insert(100)
+max_heap.insert(99)
 max_heap.insert(75)
-max_heap.insert(80)
-max_heap.insert(55)
-max_heap.insert(60)
-max_heap.insert(50)
-max_heap.insert(65)
+max_heap.insert(58)
+max_heap.insert(72)
+max_heap.insert(61)
+max_heap.insert(18)
+max_heap.insert(97)
 
 print(max_heap.heap)
+    
+# max_heap.remove()
 
-max_heap.remove()
-
-print(max_heap.heap)
+# print(max_heap.heap)
